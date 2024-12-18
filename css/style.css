@@ -1,0 +1,226 @@
+/* 全体のリセット */
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #FFFAF5; /* 背景色 */
+  font-family: 'DotGothic16', sans-serif;
+
+  /* 背景画像 */
+  background-image: url('../img/タウントップ草.jpg');
+  background-position: bottom; /* 背景を画面の下端に配置 */
+  background-size: auto 80%; /* 高さを調整、幅は自動 */
+}
+
+/* コンテナ全体のスタイル */
+.container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* タイトル画像 */
+.title-image {
+  max-width: 50%;
+  max-height: 50%;
+  display: block;
+  margin-bottom: 370px;
+}
+
+/* ボタンの基本スタイル */
+button {
+  position: absolute;
+  padding: 30px 70px;
+  font-size: 30px;
+  color: #545454;
+  background-color: #DDFAFF;
+  border: none;
+  border-radius: 70px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-family: 'DotGothic16', sans-serif;
+}
+
+/* ボタンの配置 */
+.start-button {
+  bottom: 5%;
+  left: 10%;
+}
+
+.continue-button {
+  bottom: 5%;
+  right: 10%;
+}
+
+/* ホバー時の効果 */
+.continue-button:hover {
+  background-color: #fff4aa;
+}
+
+.start-button:hover {
+  background-color: #fff4aa;
+}
+
+/* キャラクターのスタイル */
+.runner {
+  position: absolute;
+  bottom: 30%; /* 画面下からの位置 */
+  animation: moveLeft 10s linear infinite, fadeOut 10s linear infinite;
+  width: 130px;
+}
+
+/* 2匹目のキャラクター */
+#runner2 {
+  bottom: 30%; 
+  animation-delay: 1.5s; /* 1秒遅れて動く */
+}
+
+/* アニメーション: 右から左へ移動 */
+@keyframes moveLeft {
+  0% {
+    transform: translateX(100vw) scale(5); /* 右端から開始 */
+    opacity: 1; /* 完全に見える */
+  }
+  80% {
+    opacity: 1; /* 途中までは表示 */
+  }
+  100% {
+    transform: translateX(-150px) scale(5); /* 左端で終了 */
+  }
+}
+
+.hidden {
+  display: none; /* 非表示 */
+}
+
+.fade-out {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.fade-in {
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+  display: block; /* フェードイン後に表示 */
+}
+
+.text-box {
+  position: absolute;
+  bottom: 5%;
+  left: 10%;
+  width: 80%;
+  height: 20%;
+  background: rgba(255, 255, 255, 0.8);
+  border: 5px solid #DDFAFF;
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.speaker-name {
+  font-size: 15px;
+  color: #90dfed;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* テキストのスタイル */
+#typing-text,
+#typing-text-name,
+#typing-text-birthday {
+  font-size: 20px; /* 統一された文字サイズ */
+  color: #545454; /* 統一された文字色 */
+  line-height: 1.5;
+  margin: 0; /* 不要な余白を削除 */
+}
+
+/* 矢印ボタンのスタイル */
+.next-arrow {
+  position: absolute;
+  bottom: -30px; /* 枠の下部分に配置 */
+  left: 50%;
+  transform: translateX(-50%); /* 中央揃え */
+  background: none;
+  border: none;
+  color: #90dfed;
+  font-size: 24px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  animation: floatArrow 1.5s ease-in-out infinite;
+}
+
+/* 上下にふわふわ動くアニメーション */
+@keyframes floatArrow {
+  0%, 100% {
+    transform: translateX(-50%) translateY(0); /* 初期位置 */
+  }
+  50% {
+    transform: translateX(-50%) translateY(-10px); /* 10px上に移動 */
+  }
+}
+
+/* タウン画面のスタイル */
+.full-screen-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 画面に合わせる */
+}
+
+.hidden {
+  display: none; /* 非表示 */
+}
+
+/* 入力フォームのスタイル */
+input {
+  font-size: 15px;
+  padding: 10px;
+  border: 2px solid #DDFAFF;
+  border-radius: 10px;
+  outline: none;
+  width: 70%;
+  margin-top: 14px;
+}
+
+/* 枠内のボタンを右下に配置 */
+.bottom-right-button {
+  position: absolute;
+  bottom: 28px; /* 枠の下端からの距離 */
+  right: 5px; /* 枠の右端からの距離 */
+  padding: 8px 20px;
+  font-size: 20px;
+  color: #545454;
+  background-color: #DDFAFF;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.bottom-right-button:hover {
+  background-color: #fff4aa;
+}
+
+/* テキストボックスの大きさとスタイル */
+.text-box {
+  position: absolute;
+  bottom: 5%;
+  left: 10%;
+  width: 80%;
+  height: 20%; /* 枠のサイズは前と同じ */
+  background: rgba(255, 255, 255, 0.8);
+  border: 5px solid #DDFAFF;
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
