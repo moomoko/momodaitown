@@ -1,0 +1,800 @@
+/* 全体のリセット */
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #FFFAF5; /* 背景色 */
+  font-family: 'DotGothic16', sans-serif;
+  position: relative; /* これによりページ全体が正常に動作 */
+  overflow-x: hidden;
+
+  /* 背景画像 */
+  background-image: url('../img/townbackground2.jpg');
+  background-position: center bottom; 
+  background-size: cover;
+
+}
+
+/* コンテナ全体のスタイル */
+.container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* タイトル画像 */
+.title-image {
+  width: 500px;  /* ロゴの幅を固定 */
+  height: auto;  /* 高さは自動で縦横比を維持 */
+  display: block;
+  margin-bottom: 370px;
+}
+
+
+/* ボタンの基本スタイル */
+button.default-button {
+  position: absolute;
+  padding: 30px 70px;
+  font-size: 30px;
+  color: #545454;
+  background-color: #DDFAFF;
+  border: none;
+  border-radius: 70px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-family: 'DotGothic16', sans-serif;
+}
+
+/* ボタンの配置 */
+.start-button {
+  bottom: 5%;
+  left: 10%;
+}
+
+.continue-button {
+  bottom: 5%;
+  right: 10%;
+}
+
+/* ホバー時の効果 */
+.continue-button:hover {
+  background-color: #fff4aa;
+}
+
+.start-button:hover {
+  background-color: #fff4aa;
+}
+
+/* キャラクターのスタイル */
+.runner {
+  position: absolute;
+  bottom: 30%; /* 画面下からの位置 */
+  animation: moveLeft 16s linear infinite, fadeOut 16s linear infinite;
+  width: 130px;
+}
+
+/* 2匹目のキャラクター */
+#runner2 {
+  bottom: 30%; 
+  animation-delay: 1.2s; /* 1秒遅れて動く */
+}
+
+@keyframes moveLeft {
+  0% {
+    transform: translateX(100vw) scale(5); /* 画面右端外から開始 */
+    opacity: 1; /* 完全に見える */
+  }
+  10% {
+    transform: translateX(80vw) scale(5); /* 少し画面内に入ってきた状態 */
+  }
+  80% {
+    opacity: 1; /* 途中までは表示 */
+  }
+  100% {
+    transform: translateX(-100vw) scale(5); /* 画面左端を通過して消える */
+    opacity: 0; /* 画面外で消える */
+  }
+}
+
+.hidden {
+  display: none; /* 非表示 */
+}
+
+.fade-out {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.fade-in {
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+  display: block; /* フェードイン後に表示 */
+}
+
+.text-box {
+  position: absolute;
+  bottom: 5%;
+  left: 10%;
+  width: 80%;
+  height: 20%;
+  background: rgba(255, 255, 255, 0.8);
+  border: 5px solid #DDFAFF;
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.speaker-name {
+  font-size: 15px;
+  color: #90dfed;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* テキストのスタイル */
+#typing-text,
+#typing-text-name,
+#typing-text-birthday,
+#typing-text-email {
+  font-size: 20px; /* 統一された文字サイズ */
+  color: #545454; /* 統一された文字色 */
+  line-height: 1.5;
+  margin: 0; /* 不要な余白を削除 */
+}
+
+/* 矢印ボタンのスタイル */
+.next-arrow {
+  position: absolute;
+  bottom: -30px; /* 枠の下部分に配置 */
+  left: 50%;
+  transform: translateX(-50%); /* 中央揃え */
+  background: none;
+  border: none;
+  color: #90dfed;
+  font-size: 24px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  animation: floatArrow 1.5s ease-in-out infinite;
+  display: block;
+}
+
+/* 上下にふわふわ動くアニメーション */
+@keyframes floatArrow {
+  0%, 100% {
+    transform: translateX(-50%) translateY(0); /* 初期位置 */
+  }
+  50% {
+    transform: translateX(-50%) translateY(-10px); /* 10px上に移動 */
+  }
+}
+
+/* タウン画面のスタイル */
+.full-screen-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 画面に合わせる */
+}
+
+.hidden {
+  display: none; /* 非表示 */
+}
+
+/* 入力フォームのスタイル */
+input {
+  font-size: 15px;
+  padding: 10px;
+  border: 2px solid #DDFAFF;
+  border-radius: 10px;
+  outline: none;
+  width: 70%;
+  margin-top: 14px;
+}
+
+/* 枠内のボタンを右下に配置 */
+.bottom-right-button {
+  position: absolute;
+  bottom: 28px; /* 枠の下端からの距離 */
+  right: 5px; /* 枠の右端からの距離 */
+  padding: 8px 20px;
+  font-size: 20px;
+  color: #545454;
+  background-color: #DDFAFF;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.bottom-right-button:hover {
+  background-color: #fff4aa;
+}
+
+/* テキストボックスの大きさとスタイル */
+.text-box {
+  position: absolute;
+  bottom: 5%;
+  left: 10%;
+  width: 80%;
+  height: 20%; /* 枠のサイズは前と同じ */
+  background: rgba(255, 255, 255, 0.8);
+  border: 5px solid #DDFAFF;
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 全画面表示用 */
+.full-screen-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 画面全体に合わせる */
+}
+
+/* タウン画面のやさしさひろばクリック範囲 */
+.image-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.clickable-area {
+  position: absolute;
+  top: 13%; /* ひろばの位置調整 */
+  left: 3%;
+  width: 43%; /* エリアの幅 */
+  height: 35%; /* エリアの高さ */
+  /* background-color: rgba(255, 255, 255, 0.3);  */
+  cursor: pointer;
+}
+
+/* 戻るボタン */
+.bottom-left-button {
+  position: absolute;
+  bottom: 5%;
+  left: 5%;
+  background-color: #DDFAFF;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 20px;
+  font-size: 20px;
+  color: #545454;
+  cursor: pointer;
+}
+
+.bottom-left-button:hover {
+  background-color: #fff4aa;
+}
+
+/* 非表示用 */
+.hidden {
+  display: none;
+}
+
+/* 掲示板エリアのスタイル */
+#board-area {
+  position: absolute;
+  top: 19%; /* 位置調整 */
+  left: 69%; /* 掲示板部分に合わせて調整 */
+  width: 23%; /* 掲示板のサイズに合わせる */
+  height: 38%;
+  cursor: pointer;
+  /* background: rgba(255, 255, 255, 0.3); */
+}
+
+/* 戻るボタンのスタイル */
+.bottom-left-button {
+  position: absolute;
+  bottom: 87%;
+  left: 84%;
+  padding: 10px 20px;
+  font-size: 18px;
+  color: #545454;
+  background-color: #DDFAFF;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-family: 'DotGothic16', sans-serif;
+}
+
+.bottom-left-button:hover {
+  background-color: #fff4aa;
+}
+
+.bottom-right-button {
+    position: absolute;
+    bottom: 17%;
+    left: 84%;
+    padding: 10px 20px;
+    font-size: 18px;
+    color: #545454;
+    background-color: #DDFAFF;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: 'DotGothic16', sans-serif;
+}
+
+/* 投稿ボタンのスタイル */
+.post-button {
+  position: absolute;
+  bottom: 87%;
+  left: 8%;
+  padding: 10px 20px;
+  font-size: 18px;
+  color: #545454;
+  background-color: #DDFAFF;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-family: 'DotGothic16', sans-serif;
+}
+
+/* ホバー時の効果 */
+.post-button:hover {
+  background-color: #fff4aa;
+}
+
+/* 非表示 */
+.hidden {
+  display: none;
+}
+
+/* 投稿フォームのスタイル */
+.form-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  background-color: #fff;
+  border: 3px solid #DDFAFF;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+textarea {
+  width: 90%;
+  height: 100px;
+  border: 2px solid #DDFAFF;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 16px;
+  outline: none;
+  resize: none;
+  margin-bottom: 10px;
+  z-index: 1000;
+}
+
+.submit-button {
+  position: absolute;
+  bottom: 10px;
+  right: 10px; /* 右下に配置 */
+  background-color: #DDFAFF;
+  color: #545454;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  z-index: 1001;
+  font-family: 'DotGothic16', sans-serif;
+}
+
+.cancel-button {
+  position: absolute;
+  bottom: 10px;
+  left: 10px; /* 左下に配置 */
+  background-color: #DDFAFF;
+  color: #545454;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  z-index: 1001;
+  font-family: 'DotGothic16', sans-serif;
+}
+
+.submit-button:hover,
+.cancel-button:hover {
+  background-color: #fff4aa;
+}
+
+#hiroba-screen {
+  position: relative; /* 親要素にrelativeを設定 */
+  overflow: hidden;   /* はみ出さないように */
+}
+
+
+
+.actions button {
+  position: static; /* 絶対位置を解除 */
+  padding: 0; /* パディングをリセット */
+  background: none; /* 背景を削除 */
+  border: none; /* ボーダーを削除 */
+  font-size: 30px; /* アイコンサイズ */
+  cursor: pointer;
+  transition: transform 0.2s ease; /* ホバーアニメーション */
+  display: inline-block; /* 横並び用 */
+}
+
+.letter-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* 中央に配置 */
+  background: white;
+  border: 3px solid #DDFAFF;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  width: 300px; /* ポップアップの幅 */
+  padding: 20px;
+  z-index: 1000;
+  text-align: center;
+}
+
+.letter-popup .actions button:hover {
+  transform: scale(1.2); /* ホバー時に拡大 */
+}
+
+.letter-popup .actions {
+  display: flex; /* 横並びにする */
+  justify-content: center; /* 中央揃え */
+  gap: 20px; /* アイコン間にスペースを設定 */
+  margin-top: 15px; /* 上部との間隔を調整 */
+}
+
+
+.letter-content {
+  position: relative;
+  font-size: 16px;
+}
+
+.close-letter {
+  background: #DDFAFF;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.close-letter:hover {
+  background: #fff4aa;
+}
+
+
+/* 投稿成功メッセージのスタイル */
+.message-box {
+  position: absolute;
+  top: 10%; /* 枠の中の上部に表示 */
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.9);
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 18px;
+  color: #545454;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  z-index: 200; /* 枠内の他の要素より前面に表示 */
+}
+
+.letter-popup .actions {
+  display: flex; /* 横並びにする */
+  justify-content: flex-start; /* 左寄せ */
+  gap: 15px; /* アイコン間の間隔 */
+  margin-top: 10px; /* 上部との間隔 */
+  align-items: center; /* 縦方向の中央揃え */
+  position: relative; /* 重なりを防ぐため */
+}
+
+.letter-popup .actions button {
+  background: none; /* 背景をなくす */
+  border: none; /* ボーダーをなくす */
+  font-size: 24px; /* アイコンのサイズ */
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.letter-popup .actions button:hover {
+  transform: scale(1.2); /* ホバー時に少し大きくなる */
+}
+
+
+.comments-section {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.comments-section.hidden {
+  display: none;
+}
+
+.comment-input {
+  width: 90%;
+  padding: 5px;
+  margin-bottom: 10px;
+  border: 1px solid #DDFAFF;
+  border-radius: 5px;
+}
+
+.submit-comment {
+  padding: 10px 20px;
+  background-color: #DDFAFF;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.submit-comment:hover {
+  background-color: #fff4aa;
+}
+
+.comments-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 10px;
+}
+
+.comments-list li {
+  background: #f9f9f9;
+  padding: 5px;
+  margin-bottom: 5px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.ranking-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  border: 3px solid #DDFAFF;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  width: 300px;
+  text-align: center;
+  z-index: 1000;
+}
+
+.ranking-container ul {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0;
+}
+
+.ranking-container li {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 10px;
+  margin: 5px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.view-ranking-button {
+  position: fixed;
+  bottom: 150px; /* 枠の下端からの距離 */
+  left: 235px; /* 枠の右端からの距離 */
+  padding: 20px 40px;
+  font-size: 23px;
+  color: #545454;
+  background-color: #DDFAFF;
+  border: none;
+  border-radius: 70px;
+  cursor: pointer;
+  font-family: 'DotGothic16', sans-serif;
+  z-index: 1000; 
+}
+
+.close-ranking-button {
+  position: absolute;
+  bottom: 74%;
+  left: 5%;
+  padding: 10px 20px;
+  font-size: 18px;
+  color: #545454;
+  background-color: #DDFAFF;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-family: 'DotGothic16', sans-serif;
+}
+
+.view-ranking-button:hover {
+  background: #fff4aa;
+}
+
+.close-ranking-button:hover {
+  background: #fff4aa;
+}
+
+
+.hidden {
+  display: none;
+}
+
+#login-screen {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  border: 3px solid #DDFAFF;
+  border-radius: 10px;
+  padding: 20px;
+  width: 300px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+}
+
+#login-form input {
+  width: 90%;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #DDFAFF;
+  border-radius: 5px;
+}
+
+#login-form button {
+  width: 100%;  /* フォームの幅いっぱいにボタンを広げる */
+  padding: 12px;  /* ボタンの内側の余白 */
+  background-color: #DDFAFF; /* ボタンの背景色 */
+  border: none;
+  border-radius: 5px; /* 丸みのある角 */
+  cursor: pointer;
+  font-size: 16px; /* フォントサイズを調整 */
+  transition: background-color 0.3s ease;  /* 背景色の遷移 */
+}
+
+/* ボタンホバー時の色変更 */
+#login-form button:hover {
+  background-color: #fff4aa;
+}
+
+/* ログインフォームのボタン */
+.login-button {
+  background-color: #DDFAFF;
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-family: 'DotGothic16', sans-serif;
+}
+
+/* ボタンホバー時の背景色 */
+.login-button:hover {
+  background-color: #fff4aa;
+}
+
+
+
+
+.moyamoya {
+  pointer-events: auto;
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  background-image: url('../img/townmoya2.png');
+  background-size: contain; /* 画像が切り取られないようにcontainを使用 */
+  background-repeat: no-repeat;
+  cursor: pointer;
+  z-index: 1000;
+  bottom: 10px; /* イラストを広場の下部に固定 */
+}
+
+#post-container {
+  position: relative; 
+  top: 50%; /* 中央より下に配置 */
+  left: 5%;
+  width: 90%; /* 横幅を調整 */
+  height: 60%; /* 高さを変更し、広場に表示される部分を広げる */
+  padding: 10px;
+  overflow-y: scroll; /* 高さ制限をしてスクロールさせる */
+}
+
+
+#points-display {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  background: #fff;
+  padding: 10px 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* ボタンのスタイル */
+.choices button {
+  font-size: 20px; /* ボタンのサイズ調整 */
+  padding: 10px 30px; /* パディング調整 */
+  background-color: #DDFAFF;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-family: 'DotGothic16', sans-serif; /* フォント設定 */
+}
+
+/* ボタンホバー時のスタイル */
+.choices button:hover {
+  background-color: #fff4aa;
+}
+
+/* 選択肢の配置 */
+.choices {
+  position: absolute;
+  bottom: 45px;  /* 画面下から10px */
+  right: 45px;   /* 画面右から10px */
+  display: flex;
+  gap: 10px; /* ボタン間に10pxの隙間を作る */
+  align-items: flex-end; /* ボタンを右端に配置 */
+}
+
+
+
+
+/* ほめ屋さんエリアのデバッグ用クリック範囲 */
+#home-area {
+  position: absolute;
+  top: 50%; /* ほめ屋さんエリアの位置調整 */
+  left: 23%; /* ほめ屋さんのエリアの左位置 */
+  width: 48%; /* エリアの幅 */
+  height: 38%; /* エリアの高さ */
+  /* background-color: rgba(255, 255, 255, 0.3); */
+  cursor: pointer;
+}
+
+/* 再生ボタンのスタイル */
+.play-button {
+  position: fixed;  /* 画面に固定 */
+  top: 10px;         /* 上から10pxの位置 */
+  left: 10px;
+  padding: 10px 20px;
+  color: #545454;
+  background-color: #DDFAFF;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* 普通のボタンのスタイル */
+.normal-button {
+  padding: 10px 20px;
+  background-color: #DDFAFF;  /* 緑色 */
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* ボタンホバー時の色変更 */
+.normal-button:hover {
+  background-color: #fff4aa;
+}
